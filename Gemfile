@@ -47,6 +47,11 @@ gem "httparty"
 gem "prawn"       # PDF生成の基本機能
 gem "prawn-table" # テーブル描画機能
 
+group :production do
+  # Supabase(Postgres)用（本番のみ）
+  gem "pg", "~> 1.5"
+end
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
