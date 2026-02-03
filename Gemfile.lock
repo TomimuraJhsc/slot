@@ -201,6 +201,8 @@ GEM
       ast (~> 2.4.1)
       racc
     pdf-core (0.9.0)
+    pg (1.6.3-x64-mingw-ucrt)
+    pg (1.6.3-x86_64-linux)
     pp (0.6.3)
       prettyprint
     prawn (2.4.0)
@@ -386,6 +388,7 @@ DEPENDENCIES
   jbuilder
   kamal
   nokogiri
+  pg (~> 1.5)
   prawn
   prawn-table
   propshaft
