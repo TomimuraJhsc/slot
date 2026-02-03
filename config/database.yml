@@ -24,13 +24,13 @@ test:
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
   primary:
-    url: <%= ENV.fetch("DATABASE_URL") %>
+    url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/postgres") %>
   cache:
-    url: <%= ENV.fetch("DATABASE_URL") %>
+    url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/postgres") %>
     migrations_paths: db/cache_migrate
   queue:
-    url: <%= ENV.fetch("DATABASE_URL") %>
+    url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/postgres") %>
     migrations_paths: db/queue_migrate
   cable:
-    url: <%= ENV.fetch("DATABASE_URL") %>
+    url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/postgres") %>
     migrations_paths: db/cable_migrate
