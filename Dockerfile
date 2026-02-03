@@ -76,6 +76,8 @@ COPY --chown=rails:rails --from=build /rails /rails
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-# Start server via Thruster by default, this can be overwritten at runtime
+# Start server.
+# RenderなどのPaaSは環境変数 PORT で待ち受けポートが渡されるため、0.0.0.0:$PORT でbindする。
+# PORTが無い環境では従来通りThruster経由で起動する。
 EXPOSE 80
-CMD ["./bin/thrust", "./bin/rails", "server"]
+CMD ["sh", "-c", "if [ -n \"$PORT\" ]; then ./bin/rails server -b 0.0.0.0 -p \"$PORT\"; else ./bin/thrust ./bin/rails server; fi"]
