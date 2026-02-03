@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title><%= content_for(:title) || "Slot" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,10 +21,24 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="/stylesheets/common.css">
     <%= javascript_importmap_tags %>
-  </head>
+</head>
 
-  <body>
+<body>
+    <% if flash[:notice] %>
+    <div class="container">
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+    </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+    <div class="container">
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+    </div>
+    <% end %>
+
     <%= yield %>
-  </body>
+</body>
+
 </html>
