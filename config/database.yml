@@ -25,12 +25,20 @@ test:
 production:
   primary:
     url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/postgres") %>
+    prepared_statements: false
+    advisory_locks: false
   cache:
     url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/postgres") %>
+    prepared_statements: false
+    advisory_locks: false
     migrations_paths: db/cache_migrate
   queue:
     url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/postgres") %>
+    prepared_statements: false
+    advisory_locks: false
     migrations_paths: db/queue_migrate
   cable:
     url: <%= ENV.fetch("DATABASE_URL", "postgresql://localhost/postgres") %>
+    prepared_statements: false
+    advisory_locks: false
     migrations_paths: db/cable_migrate
